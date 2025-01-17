@@ -14,10 +14,10 @@ const db = admin.database();
 const app = express();
 const PORT = 3000;
 
-// Middleware to parse JSON requests
+
 app.use(bodyParser.json());
 
-// Handle form submissions
+
 app.post("/submit", (req, res) => {
   const { name, email, message } = req.body;
 

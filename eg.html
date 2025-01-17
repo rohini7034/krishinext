@@ -72,24 +72,23 @@ const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
 const cors = require('cors');
 
-// Firebase Admin SDK Initialization
+
 const serviceAccount = require('./serviceAccountKey.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://your-database-name.firebaseio.com', // Update with your Firebase Database URL
+  databaseURL: 'https://your-database-name.firebaseio.com', 
 });
 
 const db = admin.database();
 const app = express();
 const PORT = 3000;
 
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// API Endpoint to Handle Form Submission
+
 app.post('/submit', async (req, res) => {
   const { name, email, message } = req.body;
 
