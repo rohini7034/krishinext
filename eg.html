@@ -3,62 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us Section</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Email Form</title>
 </head>
 <style>
-  body {
-  margin: 0;
+    
+.form-container {
   font-family: Arial, sans-serif;
-}
-
-.about-us-banner {
-  position: relative;
-  background-image: url('https://via.placeholder.com/1280x400'); /* Replace with your actual image URL */
-  background-size: cover;
-  background-position: center;
-  height: 250px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.overlay {
-  text-align: center;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  margin-left: 4%;
+  margin-bottom: 5%;
   padding: 20px;
-  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  
 }
-
-h1 {
-  font-size: 36px;
-  margin: 0;
+.form-container label {
+  display: block;
+  margin-bottom: 8px;
   font-weight: bold;
 }
-
-p {
-  font-size: 18px;
-  margin: 10px 0 0;
-  color: #a8ff95; /* Light green color */
+.form-container input,
+.form-container textarea,
+.form-container button {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  
 }
-
-p a {
-  color: #ffffff; /* White for links */
-  text-decoration: none;
+.form-container button {
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
 }
-
-p a:hover {
-  text-decoration: underline;
+.form-container button:hover {
+  background-color: #333;
 }
+.form-container button{
+  width: 100%;
+} 
+/* .form-container input:hover{
+  border-color: red;
+} */
 
 </style>
 <body>
-  <div class="about-us-banner">
-    <div class="overlay">
-      <h1>ABOUT US</h1>
-      <p><a href="index.html">Home</a> / About Us</p>
-    </div>
-  </div>
+  
+<div class="form-container">
+<form id="emailForm" action="http://localhost:3000/submit" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message" rows="5" required></textarea>
+
+  <button type="submit">Submit</button>
+</form>
+</div>
+  <script>
+    const express = require('express');
+const bodyParser = require('body-parser');
+const admin = require('firebase-admin');
+const cors = require('cors');
+
+// Firebase Admin SDK Initialization
+const serviceAccount = require('./serviceAccountKey.json');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: 'https://your-database-name.firebaseio.com', // Update with your Firebase Database URL
+});
+
+const db = admin.database();
+const app = express();
+const PORT = 3000;
+
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// API Endpoint to Handle Form Submission
+app.post('/submit', async (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  try {
+    await db.ref(`people/${name}`).set({
+      Name: name,
+      Email: email,
+      Message: message,
+    });
+
+    res.status(200).json({ success: 'Data saved successfully!' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error saving data', details: error.message });
+  }
+});
+
+// Start the Server
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
+
+  </script>
 </body>
+
 </html>

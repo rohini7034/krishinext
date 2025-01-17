@@ -1,0 +1,193 @@
+*{
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    /* overflow-x: hidden; */
+}
+
+.navbar{
+    background-color: white; font-family: jaapokkiRegular; font-size: 17px; padding-left: 20px; padding-right: 20px;
+}
+.navbar li a:hover{
+    color: orangered;
+
+}
+
+.navdiv{
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky;
+}
+.logo a{
+    font-size: 35px; font-weight: 500; color: black;
+}
+
+.navbar li {
+ list-style: none; display: inline;
+}
+.navbar li a{
+    color: green;font-size: 18px;margin-right: 25px; font-weight: bold;
+}
+.navbar {
+  position: sticky;
+  top: 0;
+  padding: 10px 16px;
+  background: white;
+  color: #f1f1f1;
+  margin: 0;
+}
+.centered {
+  color: white;
+   position: absolute;
+   top: 20%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   font-size: 50px; }
+   
+.services-section {
+    text-align: center;
+    /* padding: 50px 20px; */
+    background-color: #fff;
+   
+}
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .service-item {
+        background-color: white;
+        padding: 15px;
+        /* border-radius: 5px; */
+        font-size: 1rem;
+        font-weight: bold;
+        /* color: #333; */
+        text-align: left;
+        display: flex;
+        /* flex-direction: column; */
+        align-items: center;
+    }
+    .service-item .arrow {
+        color: #5c964f;
+        font-size: 1.5rem;
+        margin-right: 10px;
+    }
+    .gallery-container{
+        display: flex;
+        gap: 20px;
+        padding: 30px;
+    }
+    .gallery-card{
+        text-align: center;
+        align-items: center;
+    }
+    .register-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: #333;
+        color: #fff;
+        margin-top: 20px;
+        /* margin-bottom: 20px; */
+      }
+    
+      .register-section h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+      }
+      .register-section .call-now-button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 0px;
+        border-color: white;
+        border-width: 2px;
+        cursor: pointer;
+      }
+    
+      .register-section .call-now-button:hover {
+        background-color:orange;
+      }
+    
+      .footer-main{
+    
+        height: 500px;
+        width: 100%;
+        background-color: #333;
+      }
+    
+      .footer-top{
+        height: 200px;
+        width: 100%;
+        background-color: rgb(46, 46, 46);
+        display: flex;
+        gap: 10px;
+      }
+    
+      /* .foot-icon{
+        height: 200px;
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(48, 48, 48);
+        color: #f1f1f1;
+      } */
+    
+      .foot-middle{
+        height: 300px;
+        width: 100%;
+        /* background-color: green; */
+        display: flex;
+        gap: 10px;
+      }
+      .ft-mid{
+        height: 300px;
+        width: 33%;
+        color: white;
+        /* background-color: red; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+       
+        /* margin-bottom: 70; */
+      }
+      
+      /* .social-icon{ */
+        /* align-items: center; */
+        /* height: 100px;
+        width: 30%;
+      } */
+    .icon-main{
+      height: 100px;
+      width: 100%;
+      background-color: #333;
+      display: flex;
+      /* flex-direction: column; */
+      justify-content: center;
+      gap: 15px;
+     align-items: center;
+     
+    }
+    .phn a:hover{
+      
+      color: black;
+    
+    }
+    .phn a{
+      color: green;
+    }
+    h3{
+     margin-top: 40px;
+    }
+    .list li a:hover{
+      background-color: green;
+    }
